@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import LoginModal from './Login';
 
 const Navigationbar = ()   => {
   return (
@@ -18,7 +19,7 @@ const Navigationbar = ()   => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/All-Users">Get All User</Nav.Link>
           </Nav>
-            <Button variant="outline-success">Login</Button>
+            <LoginModal/>
         </Navbar.Collapse>
       </Container>
     </Navbar>

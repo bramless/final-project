@@ -1,49 +1,75 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import Register from './Register';
 
-function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+function LoginModal(props) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    axios.post('https://api-bootcamp.do.dibimbing.id/api/v1/login', {
-      email: email,
-      password: password,
-    })
-      .then(response => {
-        localStorage.setItem('token', response.data.token);
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    axios
+      .post(`${baseUrl}/api/v1/login`, {
+        email: email,
+        password: password,
       })
-      .catch(error => {
-        console.log(error);
+      .then((response) => {
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        alert('Login success');
+        handleClose();
+      })
+      .catch((error) => {
+        alert('Login failed');
       });
   };
 
+  const baseUrl = 'https://api-bootcamp.do.dibimbing.id';
+
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} required />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <>
+      <Button variant="warning" onClick={handleShow}>
+        Login
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email address:</Form.Label>
+              <Form.Control type="email" name="email" placeholder="Enter email" required />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control type="password" name="password" placeholder="Password" required />
+            </Form.Group>
+            <div>
+                Don't have an account?{' '}
+                <Register/>
+              </div>
+            <Modal.Footer>
+              <Button variant="warning" style={{ marginTop: "15px" }} type="submit">
+                Submit
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 }
 
-export default LoginPage;
+export default LoginModal;
+
