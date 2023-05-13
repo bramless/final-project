@@ -1,0 +1,120 @@
+.container {
+  margin-top: 50px;
+}
+
+.foodContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.foodWrapper {
+  width: 300px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.foodImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.foodDetails {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.foodDetails h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.foodDetails p {
+  margin-bottom: 10px;
+}
+
+.foodDetails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.foodDetails ul li {
+  margin-bottom: 5px;
+}
+
+.foodDetails p:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center !important;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-size: 24px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.h2 {
+  margin-left: 30px;
+}
+
+.allUsersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchContainer {
+  margin-bottom: 10px;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.userTable th,
+.userTable td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.userTable th {
+  background-color: #f2f2f2;
+}
+
+.userTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.userTable tr:hover {
+  background-color: #e8e8e8;
+}
+
+.errorMessage {
+  color: red;
+}
