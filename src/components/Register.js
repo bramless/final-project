@@ -8,7 +8,7 @@ function Register() {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
-    role: 'user', // Default role is 'user'
+    role: 'user',
     password: '',
     confirmPassword: '',
   });

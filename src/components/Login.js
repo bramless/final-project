@@ -57,7 +57,7 @@ function LoginModal(props) {
             </Form.Group>
             <div>
                 Don't have an account?{' '}
-                <Register/>
+                Register
               </div>
             <Modal.Footer>
               <Button variant="warning" style={{ marginTop: "15px" }} type="submit">
